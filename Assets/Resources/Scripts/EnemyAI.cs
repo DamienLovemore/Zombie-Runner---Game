@@ -29,4 +29,14 @@ public class EnemyAI : MonoBehaviour
             //(The player for example)
             this.navMeshAgent.SetDestination(this.target.position);
     }
+
+    //Visual representation for the enemy follow range in the editor
+    //mode, for when the enemy is selected in the hierarchy.
+    private void OnDrawGizmosSelected() 
+    {
+        Gizmos.color = new Color32(255, 105, 97, 255);
+        //Draw a wire sphere with a radius of chaseRange with the
+        //center on the enemy position
+        Gizmos.DrawWireSphere(this.transform.position, this.chaseRange);
+    }
 }
