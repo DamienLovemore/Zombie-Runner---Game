@@ -12,6 +12,9 @@ public class EnemyAI : MonoBehaviour
     //Stats with the enemy being away from the player
     //(To prevent enemies from chasing the player in the start)
     private float distanceToTarget = Mathf.Infinity;
+    //If the enemy was shot it should keep following even if not
+    //within the chaseRange
+    private bool isProvoked;
    
     void Start()
     {
@@ -21,13 +24,44 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         //Calculates the distance between the enemy and the target
-        distanceToTarget = Vector3.Distance(target.position, this.transform.position);
-
+        this.distanceToTarget = Vector3.Distance(target.position, this.transform.position);
+        if(this.isProvoked)
+        {
+            this.EngageTarget();
+        }
         //Begins chasing the target if it gets close enough
-        if(distanceToTarget <= this.chaseRange)
-            //Makes the enemy AI follow the target position
-            //(The player for example)
-            this.navMeshAgent.SetDestination(this.target.position);
+        else if(this.distanceToTarget <= this.chaseRange)
+        {
+            this.isProvoked = true;            
+        }                    
+    }
+
+    private void EngageTarget()
+    {
+        //If the enemy is close enough to attack then attack
+        //(stopping distance is how close it should get to the target)
+        if(this.distanceToTarget <= this.navMeshAgent.stoppingDistance)
+        {
+            this.AttackTarget();
+        }
+        //If it is not close enough to attack, then chase the target
+        else
+        {
+            this.ChaseTarget();
+        }
+    }
+
+    //Attacks the target
+    private void AttackTarget()
+    {
+        Debug.Log($"{this.name} is attacking {this.target.name}");
+    }
+
+    //Makes the enemy AI follow the target position
+    //(The player for example)
+    private void ChaseTarget()
+    {        
+        this.navMeshAgent.SetDestination(this.target.position);
     }
 
     //Visual representation for the enemy follow range in the editor
