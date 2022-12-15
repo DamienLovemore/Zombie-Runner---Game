@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6260802961873692206}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +156,7 @@ MonoBehaviour:
   bulletRange: 100
   damage: 30
   muzzleFlash: {fileID: 2372301320927409888}
+  hitEffect: {fileID: 100010, guid: bb0d6f1b0c832ba49bd18e19f2eeef96, type: 3}
 --- !u!4 &439850649633894189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
