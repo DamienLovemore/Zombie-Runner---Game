@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3878768812747424056}
   - component: {fileID: 3878768812747424063}
   - component: {fileID: 3878768812747424059}
+  - component: {fileID: 2701294685752264582}
   - component: {fileID: 875931629825669408}
   - component: {fileID: 3878768812747424052}
   m_Layer: 0
@@ -124,6 +125,26 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &2701294685752264582
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878768812747424062}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a021d897afeba5c4eb7625466d9ab930, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &875931629825669408
 MonoBehaviour:
   m_ObjectHideFlags: 0

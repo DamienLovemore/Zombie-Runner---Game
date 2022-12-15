@@ -15,10 +15,12 @@ public class EnemyAI : MonoBehaviour
     //If the enemy was shot it should keep following even if not
     //within the chaseRange
     private bool isProvoked;
+    private Animator animator;
    
     void Start()
     {
         this.navMeshAgent = GetComponent<NavMeshAgent>();
+        this.animator = GetComponent<Animator>();
     }
     
     void Update()
@@ -54,13 +56,16 @@ public class EnemyAI : MonoBehaviour
     //Attacks the target
     private void AttackTarget()
     {
+        this.animator.SetBool("Attack", true);        
         Debug.Log($"{this.name} is attacking {this.target.name}");
     }
 
     //Makes the enemy AI follow the target position
     //(The player for example)
     private void ChaseTarget()
-    {        
+    {
+        this.animator.SetBool("Attack", false);
+        this.animator.SetTrigger("Move");
         this.navMeshAgent.SetDestination(this.target.position);
     }
 
