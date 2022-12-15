@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private Camera FPCamera;
     [SerializeField] private float bulletRange = 100f;
+    [SerializeField] private float damage = 30f;
 
     void Update()
     {
@@ -23,9 +24,16 @@ public class Weapon : MonoBehaviour
         //to consider its rotation and actual position in the world)
         hittedSomething = Physics.Raycast(this.FPCamera.transform.position, this.FPCamera.transform.forward, out hit, bulletRange);
         
+        //Verifies if it has hitted something or not
         if(hittedSomething)
         {
-            Debug.Log($"Hitted something: {hit.transform.name}");
+            //Verifies it has hitted an enemy (not a object)
+            EnemyHealth targetHealth = hit.transform.GetComponent<EnemyHealth>();
+            if (targetHealth != null)
+            {
+                //Decreases enemy health
+                targetHealth.TakeDamage(this.damage);
+            }
         }
     }
 }
