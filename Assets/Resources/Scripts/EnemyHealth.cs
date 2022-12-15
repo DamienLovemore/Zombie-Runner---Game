@@ -18,7 +18,6 @@ public class EnemyHealth : MonoBehaviour
         //Reduces the enemy health by the hitPoints, and add protection
         //to avoid enemy having health outside 0 and its max health
         this.health = Mathf.Clamp(this.health - hitPoints, 0f, this.enemyMaxHealth);
-        Debug.Log($"New health: {this.health}");
 
         if(this.health == 0)
         {
