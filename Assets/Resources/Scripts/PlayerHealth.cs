@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
@@ -9,11 +6,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float playerMaxHealth = 100f;
 
     private float health;
+    private DeathHandler deathHandler;
 
     void Start()
     {
         //Sets its health to be full health in the beginning
         this.health = playerMaxHealth;
+        this.deathHandler = this.GetComponent<DeathHandler>();
     }
 
     //Reduces the player health by the amount of damage received
@@ -29,9 +28,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    //Destroys the player
+    //Kills the player
     private void Die()
     {
-        Debug.Log("I died");
+        this.deathHandler.HandleDeath();
     }
 }
