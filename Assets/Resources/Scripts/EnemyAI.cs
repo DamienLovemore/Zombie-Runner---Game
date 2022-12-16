@@ -61,6 +61,13 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    //Signals that the enemy was attacked, and should engage with the
+    //player target
+    public void OnDamageTaken()
+    {
+        this.isProvoked = true;
+    }
+
     //Attacks the target
     private void AttackTarget()
     {

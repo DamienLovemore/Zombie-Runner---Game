@@ -16,6 +16,11 @@ public class EnemyHealth : MonoBehaviour
     //Reduces the enemy health by the amount of damage received
     public void TakeDamage(float hitPoints)
     {
+        //Cals the method named OnDamageTaken on every script in
+        //this game object or its children(signals enemy to start
+        //attacking)
+        BroadcastMessage("OnDamageTaken");
+
         //Reduces the enemy health by the hitPoints, and add protection
         //to avoid enemy having health outside 0 and its max health
         this.health = Mathf.Clamp(this.health - hitPoints, 0f, this.enemyMaxHealth);
