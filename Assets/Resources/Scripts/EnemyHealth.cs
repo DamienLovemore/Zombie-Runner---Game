@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float enemyMaxHealth = 100f;
-    [SerializeField] private float health;
+    
+    private float health;
     
     void Start()
     {
+        //Sets its health to be full health in the beginning
         this.health = enemyMaxHealth;
     }
 

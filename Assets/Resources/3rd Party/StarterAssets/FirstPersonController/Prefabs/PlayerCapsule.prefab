@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 8616685848737228371}
   - component: {fileID: 1978471637655604388}
   - component: {fileID: 5420857361349278248}
-  - component: {fileID: 476035387363173441}
+  - component: {fileID: 4237910406466908386}
   - component: {fileID: 8616685848737228376}
   m_Layer: 8
   m_Name: PlayerCapsule
@@ -251,7 +251,7 @@ MonoBehaviour:
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
---- !u!114 &476035387363173441
+--- !u!114 &4237910406466908386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,9 +260,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8616685848737228372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f96736ef6f477544f830b5e6039b80ee, type: 3}
+  m_Script: {fileID: 11500000, guid: f97bc057c865b304c89531eee23d570c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMaxHealth: 100
 --- !u!114 &8616685848737228376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -357,7 +358,7 @@ MonoBehaviour:
     m_ActionId: e4ce1614-c754-48c1-9103-33130441661f
     m_ActionName: UI/New action
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: KeyboardMouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
