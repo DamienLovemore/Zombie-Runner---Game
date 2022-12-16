@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    [Tooltip("The maximum amount of health of the enemy")]
     [SerializeField] private float enemyMaxHealth = 100f;
     
     private float health;

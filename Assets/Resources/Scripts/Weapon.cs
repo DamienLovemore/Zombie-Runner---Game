@@ -9,11 +9,15 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Camera FPCamera;
 
     [Header("Weapon config")]
+    [Tooltip("How far the bullet of the weapon can get")]
     [SerializeField] private float bulletRange = 100f;
+    [Tooltip("Amount of hit points inflicted per shot")]
     [SerializeField] private float damage = 30f;
 
     [Header("VFXs")]
+    [Tooltip("Visual effect played when the weapon shoots")]
     [SerializeField] private ParticleSystem muzzleFlash;
+    [Tooltip("Visual effect played when the bullet hits something")]
     [SerializeField] private GameObject hitEffect;
 
     private void OnFire()

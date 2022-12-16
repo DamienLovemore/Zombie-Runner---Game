@@ -5,8 +5,14 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("The target of the enemy")]
     [SerializeField] private Transform target;
+
+    [Header("Enemy Config")]
+    [Tooltip("How close the target can get to the enemy to be attacked")]
     [SerializeField] private float chaseRange = 5f;
+    [Tooltip("How quickly the enemy face its head on the target")]
+    [SerializeField] private float turnSpeed = 5f;
 
     private NavMeshAgent navMeshAgent;
     //Stats with the enemy being away from the player
@@ -40,6 +46,10 @@ public class EnemyAI : MonoBehaviour
 
     private void EngageTarget()
     {
+        //When the enemy is provoked by the player, it does not matter
+        //if it is moving closer, or attacking it should face its target
+        this.FaceTarget();
+
         //If the enemy is close enough to attack then attack
         //(stopping distance is how close it should get to the target)
         if(this.distanceToTarget <= this.navMeshAgent.stoppingDistance)
@@ -57,6 +67,21 @@ public class EnemyAI : MonoBehaviour
     private void AttackTarget()
     {
         this.animator.SetBool("Attack", true);    
+    }
+
+    private void FaceTarget()
+    {
+        //Makes the calculation and returns the result, without considering
+        //the magnitude or distance of both
+        Vector3 direction = (target.position - transform.position).normalized;
+        //Creates a rotation that looks into the direction of the target
+        //(Without looking up and down)
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+
+        //Makes the enemy rotates itself from its actual position into the target position.
+        //(Uses turnSpeed to be able to control how fast it turns, Time.deltaTime is used
+        // for making the rotation framerate independent)
+        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, lookRotation, Time.deltaTime * this.turnSpeed);
     }
 
     //Makes the enemy AI follow the target position

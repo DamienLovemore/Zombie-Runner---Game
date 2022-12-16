@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Tooltip("The maximum amount of health of the player")]
     [SerializeField] private float playerMaxHealth = 100f;
 
     private float health;
