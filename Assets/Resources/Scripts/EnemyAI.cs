@@ -56,8 +56,7 @@ public class EnemyAI : MonoBehaviour
     //Attacks the target
     private void AttackTarget()
     {
-        this.animator.SetBool("Attack", true);        
-        Debug.Log($"{this.name} is attacking {this.target.name}");
+        this.animator.SetBool("Attack", true);    
     }
 
     //Makes the enemy AI follow the target position
