@@ -22,8 +22,17 @@ public class Weapon : MonoBehaviour
 
     [Header("Ammunition")]
     [SerializeField] private Ammo ammoSlot;
+    [Tooltip("The type of ammo this weapon use")]
+    [SerializeField] private AmmoType ammoType;
 
     private bool canShoot = true;
+
+    //When switching the weapon set it to be able to shoot
+    //again, even if the other weapon was on cooldown.
+    private void OnEnable() 
+    {
+        this.canShoot = true;
+    }
 
     private void OnFire()
     {
@@ -39,14 +48,14 @@ public class Weapon : MonoBehaviour
         this.canShoot = false;
 
         //If it does have enough ammo do shoot
-        if (this.ammoSlot.GetCurrentAmmo() > 0)
+        if (this.ammoSlot.GetCurrentAmmo(this.ammoType) > 0)
         {
             //Shoot a bullet
             PlayMuzzleFlash();
             ProcessRaycast();
 
             //Decreases ammo amount
-            this.ammoSlot.ReduceCurrentAmmo();
+            this.ammoSlot.ReduceCurrentAmmo(this.ammoType);
         }
 
         //Wait for a while before shooting again
