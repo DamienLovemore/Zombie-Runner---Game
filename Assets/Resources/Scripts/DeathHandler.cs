@@ -10,12 +10,16 @@ public class DeathHandler : MonoBehaviour
     [SerializeField] private Canvas gunAimingCanvas;
 
     private FirstPersonController playerController;
+    private WeaponSwitcher weaponSwitcher;
 
     void Start() 
     {
-        //In the start it will not be visible or usable
+        //In the start it will not be visible or usable,
+        //the game over screen
         this.gameOverCanvas.enabled = false;
-        //this.playerController = this.GetComponent<FirstPersonController>();
+
+        this.playerController = this.GetComponent<FirstPersonController>();
+        this.weaponSwitcher = FindObjectOfType<WeaponSwitcher>();
     }
 
     //On player death show the game over canvas, pauses
@@ -31,7 +35,9 @@ public class DeathHandler : MonoBehaviour
         //anymore
         Time.timeScale = 0;
         //Disables camera rotation
-        //this.playerController.enabled = false;
+        this.playerController.enabled = false;
+        //Disable weapon switching when dead
+        this.weaponSwitcher.enabled = false;
 
         //Unlock the mouse cursor from weapon aiming to
         //allow the player to click on the canvas
