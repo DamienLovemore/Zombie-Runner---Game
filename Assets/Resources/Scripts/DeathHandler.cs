@@ -15,7 +15,7 @@ public class DeathHandler : MonoBehaviour
     {
         //In the start it will not be visible or usable
         this.gameOverCanvas.enabled = false;
-        this.playerController = this.GetComponent<FirstPersonController>();
+        //this.playerController = this.GetComponent<FirstPersonController>();
     }
 
     //On player death show the game over canvas, pauses
@@ -31,7 +31,7 @@ public class DeathHandler : MonoBehaviour
         //anymore
         Time.timeScale = 0;
         //Disables camera rotation
-        this.playerController.enabled = false;
+        //this.playerController.enabled = false;
 
         //Unlock the mouse cursor from weapon aiming to
         //allow the player to click on the canvas

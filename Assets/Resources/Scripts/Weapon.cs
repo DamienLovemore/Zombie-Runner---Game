@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -10,6 +11,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float bulletRange = 100f;
     [Tooltip("Amount of hit points inflicted per shot")]
     [SerializeField] private float damage = 30f;
+    [Tooltip("The amount of seconds to wait between each shot")]
+    [SerializeField] private float timeBetweenShots = 0.5f;
 
     [Header("VFXs")]
     [Tooltip("Visual effect played when the weapon shoots")]
@@ -20,18 +23,35 @@ public class Weapon : MonoBehaviour
     [Header("Ammunition")]
     [SerializeField] private Ammo ammoSlot;
 
+    private bool canShoot = true;
+
     private void OnFire()
     {
-        //If it does not have enough ammo do not shoot
-        if (this.ammoSlot.GetCurrentAmmo() == 0)
-            return;
+        if(this.canShoot)
+        {
+            StartCoroutine(this.Shoot());
+        }
+    }
 
-        //Shoot
-        PlayMuzzleFlash();
-        ProcessRaycast();
+    //Shoots using the current weapon
+    private IEnumerator Shoot()
+    {
+        this.canShoot = false;
 
-        //Decreases ammo amount
-        this.ammoSlot.ReduceCurrentAmmo();
+        //If it does have enough ammo do shoot
+        if (this.ammoSlot.GetCurrentAmmo() > 0)
+        {
+            //Shoot a bullet
+            PlayMuzzleFlash();
+            ProcessRaycast();
+
+            //Decreases ammo amount
+            this.ammoSlot.ReduceCurrentAmmo();
+        }
+
+        //Wait for a while before shooting again
+        yield return new WaitForSeconds(this.timeBetweenShots);
+        this.canShoot = true;
     }
 
     private void PlayMuzzleFlash()
