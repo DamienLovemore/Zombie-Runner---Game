@@ -267,11 +267,6 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 3263309333167854757, guid: f2836d3f9f8e9ea4389553ee67e0141a, type: 3}
   m_PrefabInstance: {fileID: 3263309332977838345}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &540911309 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 5447607037737483482, guid: e3b655677daefcc4db950397679a6d0a, type: 3}
-  m_PrefabInstance: {fileID: 1623584716769080080}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,10 +2426,6 @@ PrefabInstance:
       propertyPath: gunAimingCanvas
       value: 
       objectReference: {fileID: 1022887010}
-    - target: {fileID: 8438411682322263364, guid: e3b655677daefcc4db950397679a6d0a, type: 3}
-      propertyPath: FPCamera
-      value: 
-      objectReference: {fileID: 540911309}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3b655677daefcc4db950397679a6d0a, type: 3}
 --- !u!1001 &2037031518024137135

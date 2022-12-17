@@ -77,6 +77,10 @@ PrefabInstance:
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 5447607037737483482}
+    - target: {fileID: 2290740299784967727, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: ammoSlot
+      value: 
+      objectReference: {fileID: 2348366343000137382}
     - target: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -399,6 +403,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8997996947095583982, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
   m_PrefabInstance: {fileID: 9034765723322180494}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2348366343000137382 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6770877479688076584, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+  m_PrefabInstance: {fileID: 9034765723322180494}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178c6e9aa9b8d4648ae02d16dcc757f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4900878033987419270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4135013735270702856, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}

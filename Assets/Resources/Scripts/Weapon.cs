@@ -17,10 +17,21 @@ public class Weapon : MonoBehaviour
     [Tooltip("Visual effect played when the bullet hits something")]
     [SerializeField] private GameObject hitEffect;
 
+    [Header("Ammunition")]
+    [SerializeField] private Ammo ammoSlot;
+
     private void OnFire()
     {
+        //If it does not have enough ammo do not shoot
+        if (this.ammoSlot.GetCurrentAmmo() == 0)
+            return;
+
+        //Shoot
         PlayMuzzleFlash();
         ProcessRaycast();
+
+        //Decreases ammo amount
+        this.ammoSlot.ReduceCurrentAmmo();
     }
 
     private void PlayMuzzleFlash()
