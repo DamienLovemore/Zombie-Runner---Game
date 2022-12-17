@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using Cinemachine;
 
 public class Weapon : MonoBehaviour
 {
     [Header("Aim target")]
     [SerializeField] private Camera FPCamera;
+    [SerializeField] private float ZoomOutFOV = 40f;
 
     [Header("Weapon config")]
     [Tooltip("How far the bullet of the weapon can get")]
@@ -29,8 +31,9 @@ public class Weapon : MonoBehaviour
 
     //When switching the weapon set it to be able to shoot
     //again, even if the other weapon was on cooldown.
-    private void OnEnable() 
+    void OnEnable() 
     {
+        //Re-enable the shooting
         this.canShoot = true;
     }
 

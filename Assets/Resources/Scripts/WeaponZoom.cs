@@ -17,19 +17,36 @@ public class WeaponZoom : MonoBehaviour
 
     private bool zoomToggle = false;
 
+    //Upon weapon switch disables the zoom
+    //(Because the other types of weapon, does not have zoom)
+    void OnDisable() 
+    {
+        this.ZoomOut();
+    }
+
     //Zoom in and out with the weapon when the player
     //pressed the right mouse button
     void OnZoom()
     {
         if (this.zoomToggle == false)
         {
-            this.fpsCamera.m_Lens.FieldOfView = this.ZoomInFOV;
-            this.zoomToggle = true;
+            this.ZoomIn();
         }
         else
         {
-            this.fpsCamera.m_Lens.FieldOfView = this.ZoomOutFOV;
-            this.zoomToggle = false;
+            this.ZoomOut();
         }
+    }
+
+    private void ZoomIn()
+    {
+        this.fpsCamera.m_Lens.FieldOfView = this.ZoomInFOV;
+        this.zoomToggle = true;
+    }
+
+    private void ZoomOut()
+    {
+        this.fpsCamera.m_Lens.FieldOfView = this.ZoomOutFOV;
+        this.zoomToggle = false;
     }
 }
