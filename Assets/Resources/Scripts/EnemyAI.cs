@@ -11,24 +11,34 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float chaseRange = 5f;
     [Tooltip("How quickly the enemy face its head on the target")]
     [SerializeField] private float turnSpeed = 5f;
-
-    private NavMeshAgent navMeshAgent;
+    
+    private EnemyHealth enemyHealth;
     //Stats with the enemy being away from the player
     //(To prevent enemies from chasing the player in the start)
     private float distanceToTarget = Mathf.Infinity;
     //If the enemy was shot it should keep following even if not
     //within the chaseRange
     private bool isProvoked;
+    private NavMeshAgent navMeshAgent;
     private Animator animator;
    
     void Start()
     {
         this.navMeshAgent = GetComponent<NavMeshAgent>();
         this.animator = GetComponent<Animator>();
+        this.enemyHealth = GetComponent<EnemyHealth>();
     }
     
     void Update()
     {
+        //If the enemy is dead, it should not chase or attack
+        //the player
+        if(this.enemyHealth.IsDead())
+        {
+            this.enabled = false;
+            this.navMeshAgent.enabled = false;
+        }
+
         //Calculates the distance between the enemy and the target
         this.distanceToTarget = Vector3.Distance(target.position, this.transform.position);
         if(this.isProvoked)
