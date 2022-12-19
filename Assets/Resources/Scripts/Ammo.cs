@@ -45,6 +45,17 @@ public class Ammo : MonoBehaviour
         }
     }
 
+    //Increases the amount of ammo the player have for
+    //this type of ammo
+    public void IncreaseCurrentAmmo(AmmoType ammoType, int ammoAmount)
+    {
+        //Gets the ammo info stored for this type of ammo
+        AmmoSlot currentAmmo = this.GetAmmoSlot(ammoType);
+
+        //Increases the amount of ammo
+        currentAmmo.ammoAmount += ammoAmount;
+    }
+
     //Returns the AmmoSlot instance that is used to store
     //the ammo of the type that was passed
     private AmmoSlot GetAmmoSlot(AmmoType ammoType)
