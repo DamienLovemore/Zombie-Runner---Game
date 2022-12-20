@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using Cinemachine;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -22,10 +22,13 @@ public class Weapon : MonoBehaviour
     [Tooltip("Visual effect played when the bullet hits something")]
     [SerializeField] private GameObject hitEffect;
 
-    [Header("Ammunition")]
+    [Header("Ammunition")]    
+    [Tooltip("The slot that stores all the types of ammos")]
     [SerializeField] private Ammo ammoSlot;
     [Tooltip("The type of ammo this weapon use")]
     [SerializeField] private AmmoType ammoType;
+    [Tooltip("The text UI that displays the current ammo amount")]
+    [SerializeField] private TextMeshProUGUI textAmmo; 
 
     private bool canShoot = true;
 
@@ -35,14 +38,26 @@ public class Weapon : MonoBehaviour
     {
         //Re-enable the shooting
         this.canShoot = true;
+        //Updates the ammo count to display
+        //this weapon ammo
+        this.DisplayAmmo();
     }
 
     private void OnFire()
     {
+        this.DisplayAmmo();
         if(this.canShoot)
         {
             StartCoroutine(this.Shoot());
         }
+    }
+
+    //Display the current ammo of this weapon in the screen
+    private void DisplayAmmo()
+    {
+        int currentAmmo = this.ammoSlot.GetCurrentAmmo(this.ammoType);
+
+        textAmmo.text = currentAmmo.ToString();
     }
 
     //Shoots using the current weapon

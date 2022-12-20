@@ -3,15 +3,13 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [Header("The target of the enemy")]
-    [SerializeField] private Transform target;
-
     [Header("Enemy Config")]
     [Tooltip("How close the target can get to the enemy to be attacked")]
     [SerializeField] private float chaseRange = 5f;
     [Tooltip("How quickly the enemy face its head on the target")]
     [SerializeField] private float turnSpeed = 5f;
     
+    private Transform target;
     private EnemyHealth enemyHealth;
     //Stats with the enemy being away from the player
     //(To prevent enemies from chasing the player in the start)
@@ -21,12 +19,14 @@ public class EnemyAI : MonoBehaviour
     private bool isProvoked;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
-   
+       
     void Start()
     {
+        this.enemyHealth = GetComponent<EnemyHealth>();
         this.navMeshAgent = GetComponent<NavMeshAgent>();
         this.animator = GetComponent<Animator>();
-        this.enemyHealth = GetComponent<EnemyHealth>();
+        
+        this.target = FindObjectOfType<PlayerHealth>().transform;
     }
     
     void Update()
