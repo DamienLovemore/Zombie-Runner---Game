@@ -37,7 +37,11 @@ public class Weapon : MonoBehaviour
     void OnEnable() 
     {
         //Re-enable the shooting
-        this.canShoot = true;
+        this.canShoot = true;        
+    }
+
+    void Update()
+    {
         //Updates the ammo count to display
         //this weapon ammo
         this.DisplayAmmo();
@@ -45,7 +49,6 @@ public class Weapon : MonoBehaviour
 
     private void OnFire()
     {
-        this.DisplayAmmo();
         if(this.canShoot)
         {
             StartCoroutine(this.Shoot());
