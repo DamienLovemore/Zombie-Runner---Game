@@ -1785,6 +1785,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3878768812747424058, guid: c1175b41d22c8344ebada6df6e70435b, type: 3}
   m_PrefabInstance: {fileID: 1628583916}
   m_PrefabAsset: {fileID: 0}
+--- !u!223 &1694491167 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 1694491167, guid: f2836d3f9f8e9ea4389553ee67e0141a, type: 3}
+  m_PrefabInstance: {fileID: 3263309332977838345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1704587252
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,6 +2664,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1054339749975140718, guid: 358ea6b4f7dd5514482c5b6c5d14a453, type: 3}
+      propertyPath: damageReceivedCanvas
+      value: 
+      objectReference: {fileID: 1694491167}
     - target: {fileID: 2111135816741926940, guid: 358ea6b4f7dd5514482c5b6c5d14a453, type: 3}
       propertyPath: textAmmo
       value: 
